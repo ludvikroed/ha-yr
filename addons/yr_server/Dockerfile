@@ -8,6 +8,7 @@ ENV LANG C.UTF-8
 # Kopier filer til container
 COPY run.sh /
 COPY server.py /data/
+COPY public /public/
 
 # Gi run.sh kjørbar
 RUN chmod a+x /run.sh
