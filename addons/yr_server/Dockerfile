@@ -1,5 +1,5 @@
 # Base image med Python 3.11
-ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base-python:3.11
+ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-python:3.11
 FROM $BUILD_FROM
 
 # Sett språk
