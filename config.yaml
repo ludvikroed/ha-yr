@@ -1,0 +1,15 @@
+{
+  "name": "YR Python Server",
+  "version": "1.0",
+  "slug": "yr_server",
+  "description": "Hoster Python-server som REST-proxy til YR",
+  "arch": ["armv7", "armhf", "aarch64", "amd64"],
+  "startup": "before",
+  "boot": "auto",
+  "ports": {
+    "8000/tcp": 8000
+  },
+  "map": [],
+  "options": {},
+  "schema": {}
+}

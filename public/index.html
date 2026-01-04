@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Temperatur nå</title>
+</head>
+
+<body>
+
+    <h1>Temperaturen der du er</h1>
+    <p id="status">Henter posisjon...</p>
+    <p id="temp" style="font-size: 2em;"></p>
+
+    <script>
+        const statusEl = document.getElementById("status");
+        const tempEl = document.getElementById("temp");
+
+        function fetchWeather(lat, lon) {
+            const url = `/weather?lat=${lat}&lon=${lon}`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    const temp = data.properties.timeseries[0].data.instant.details.air_temperature;
+                    tempEl.textContent = `${temp} °C`;
+                    statusEl.textContent = "";
+                })
+                .catch(() => {
+                    statusEl.textContent = "Kunne ikke hente værdata.";
+                });
+        }
+
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    statusEl.textContent = "Henter værdata...";
+                    fetchWeather(pos.coords.latitude, pos.coords.longitude);
+                },
+                () => {
+                    statusEl.textContent = "Kunne ikke hente posisjon.";
+                }
+            );
+        } else {
+            statusEl.textContent = "Geolokasjon støttes ikke.";
+        }
+    </script>
+
+</body>
+
+</html>
