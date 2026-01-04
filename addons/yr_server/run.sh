@@ -9,4 +9,4 @@ pip install --upgrade pip
 pip install requests
 
 # Start Python-serveren
-python /data/server.py
+exec python /data/server.py
